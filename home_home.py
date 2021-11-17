@@ -4,25 +4,19 @@ di={'t':['Small table lamp','$5.0'],'f1':['City picture frame','$7.0'],'r':['4x5
 db = {'c':['shower curtains','$8.0'],'m':['wall mounted mirror','$20.0'],'s':['marble sink','$40.0'],'n':['none and next','$0']}
 
 class home:
-    __slots__ = []
+    __slots__ = [basket]
 
 class home_category:
-    __slots__ = ['garden','indoor','bathroom']
-
-class item_state():
-    __slots__ = ['name','code','price']
-    def __init__(self,code):
+    __slots__ = ['type','name','code','price']
+    def __init__(self,type,code,name):
+        self.type=type
         self.code=code
         self.name= name
-        self.price= price
-
-
-class home_avatar:
-    pass
+        self.price=0
 
 def menu():
     for i in dg:
-       print(i,', item=',dg[i][0],', price=',dg[i][1])
+       print(dg[i][0],'(',i,')', ':',dg[i][1])
 
 menu()
 
