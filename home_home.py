@@ -7,10 +7,17 @@ class home:
     __slots__ = ['garden','indoor','bathroom']
 
 class home_category:
+    __slots__ = []
 
-class item_state:
-    name=''
-    code=''
-    price=0
+class item_state():
+    __slots__ = ['name','code','price']
+    def __init__(self,name,code,price):
+        self.name=name
+        self.code=code
+        self.price=price
+
 
 class home_avatar:
+
+def main():
+    item1=item_state.
