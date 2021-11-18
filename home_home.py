@@ -18,6 +18,13 @@ class home_category:
 def garden_menu():
         for i in dg:
            print(dg[i][0],'(',i,')', ':',dg[i][1])
+def main():
+    print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
+    print('For your new Home space ...')
+    x=input('Choose one type of garden idea (O for options, n for next category):')
+    if x=='O' or 'o':
+        garden_menu()
+
 
 
 
