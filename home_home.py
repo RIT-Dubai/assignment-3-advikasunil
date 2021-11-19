@@ -16,16 +16,24 @@ class home_category:
         self.price=0
 
 def garden_menu():
+        print('Garden Options:')
         for i in dg:
            print(dg[i][0],'(',i,')', ':',dg[i][1])
+def indoor_menu():
+         print('Indoor Options:')
+        for i in di:
+           print(di[i][0],'(',i,')', ':',di[i][1])
+
 def main():
     print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
     print('For your new Home space ...')
     x=input('Choose one type of garden idea (O for options, n for next category):')
     if x=='O' or 'o':
         garden_menu()
+    elif x=='N' or 'n':
+        pass
 
-
+#
 
 
 
