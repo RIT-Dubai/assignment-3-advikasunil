@@ -20,9 +20,13 @@ def garden_menu():
         for i in dg:
            print(dg[i][0],'(',i,')', ':',dg[i][1])
 def indoor_menu():
-         print('Indoor Options:')
+        print('Indoor Options:')
         for i in di:
            print(di[i][0],'(',i,')', ':',di[i][1])
+def bathroom_menu():
+        print('Indoor Options:')
+        for i in db:
+           print(db[i][0],'(',i,')', ':',db[i][1])
 
 def main():
     print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
