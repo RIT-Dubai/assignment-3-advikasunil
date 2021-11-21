@@ -14,7 +14,8 @@ class home_category:
         self.code=code
         self.name= name
         self.price=0
-
+def print_home_category(item):
+    print(item.type+' category ,'+item.code+', '+item.name)
 def garden_menu():
         print('Garden Options:')
         for i in dg:
@@ -27,20 +28,28 @@ def bathroom_menu():
         print('Indoor Options:')
         for i in db:
            print(db[i][0],'(',i,')', ':',db[i][1])
+def add_basket(basket,item):
+    basket.append(item)
+
 
 def main():
+    basket=list()
     print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
     print('For your new Home space ...')
     x=input('Choose one type of garden idea (O for options, n for next category):')
-    if x=='O' or 'o':
+    if x=='O' or x=='o':
         garden_menu()
-    elif x=='N' or 'n':
-        pass
+        cd=input('Enter code of item')
+        cd=cd.split()
+        for i in range(len(cd)):
+            cod=cd[i]
+            nm=dg[cod][0]
+            it1=home_category('garden',cod,nm)
+            print_home_category(it1)
+    else:
+        print('bye')
+    # elif x=='N' or x=='n':
+    #     pass
 
-#
-
-
-
-    #item1=item_state('p')
 main()
 
