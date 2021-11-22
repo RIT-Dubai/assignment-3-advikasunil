@@ -15,7 +15,7 @@ class home_category:
         self.name= name
         self.price=0
 def print_home_category(item):
-    print(item.type+' category ,'+item.code+', '+item.name)
+    print('one '+ item.name+' is added to your home for '+item.price)
 def garden_menu():
         print('Garden Options:')
         for i in dg:
@@ -53,12 +53,14 @@ def main():
                 else:
                   cod=cd[i]
                   basket.append(cod)
+                  nm=dg[cod][0]
+                  it1=home_category('garden',cod,nm)
+                  it1.price=dg[cod][1]
+                  print_home_category(it1)
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
-            # nm=dg[cod][0]
-            # it1=home_category('garden',cod,nm)
-            # print_home_category(it1)
+
     while True:
         y=input('Choose one type of indoor idea (O for options, n for next category):')
         if y=='n' or y=='N':
@@ -93,12 +95,6 @@ def main():
                   basket.append(cod)
         else:
             print('Invalid option. Enter O for options, n for next category ')
-
-
-
-
-
-
 
 main()
 
