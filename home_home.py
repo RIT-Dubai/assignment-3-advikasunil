@@ -33,21 +33,45 @@ def add_basket(basket,item):
 
 
 def main():
+    a,b,c=0,0,0
     basket=list()
     print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
     print('For your new Home space ...')
     x=input('Choose one type of garden idea (O for options, n for next category):')
-
-    while x!= 'n':
+    a+=1
+    while x !='n' and a==1 :
         garden_menu()
         cd=input('Enter code of item')
         cd=cd.split()
+
         for i in range(len(cd)):
-            cod=cd[i]
-            basket.append(cod)
+            if cd[i] =='n':
+               break
+
+            else:
+              cod=cd[i]
+              basket.append(cod)
+        a+=1
+
             # nm=dg[cod][0]
             # it1=home_category('garden',cod,nm)
             # print_home_category(it1)
+
+    y=input('Choose one type of indoor idea (O for options, n for next category):')
+    b+=1
+
+    while y !='n' and b==1 :
+        indoor_menu()
+        cd=input('Enter code of item')
+        cd=cd.split()
+        for i in range(len(cd)):
+         if cd[i] =='n':
+               break
+         else:
+              cod=cd[i]
+              basket.append(cod)
+        b+=1
+
 
 
 
