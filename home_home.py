@@ -37,6 +37,7 @@ def main():
     print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
     print('For your new Home space ...')
     x=input('Choose one type of garden idea (O for options, n for next category):')
+
     if x=='O' or x=='o':
         garden_menu()
         cd=input('Enter code of item')
@@ -46,6 +47,7 @@ def main():
             nm=dg[cod][0]
             it1=home_category('garden',cod,nm)
             print_home_category(it1)
+
     else:
         print('bye')
     # elif x=='N' or x=='n':
