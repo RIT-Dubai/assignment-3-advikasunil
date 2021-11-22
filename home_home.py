@@ -1,7 +1,7 @@
 
 dg={'p':['3 Pack garden flower','$5.0'],'l':['Hanging light wire','$10.0'],'b':['Garden bench','$35.0'],'n':['None and next','$0']}
 di={'t':['Small table lamp','$5.0'],'f1':['City picture frame','$7.0'],'r':['4x5 Entry rug','$35.0'],'f2':['Flower vase','$14.0'],'n':['None and next','$0']}
-db = {'c':['Shower curtains','$8.0'],'m':['Wall mounted mirror','$20.0'],'s':['Marble sink','$40.0'],'n':['None and next','$0']}
+db = {'c':['Shower curtain','$8.0'],'m':['Wall mounted mirror','$20.0'],'s':['Marble sink','$40.0'],'n':['None and next','$0']}
 
 class home:
     pass
@@ -97,6 +97,10 @@ def main():
               else:
                   cod=cd[i]
                   basket.append(cod)
+                  nm=db[cod][0]
+                  itm=home_category('bathroom',cod,nm)
+                  itm.price=db[cod][1]
+                  print_home_category(itm)
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
