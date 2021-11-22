@@ -76,6 +76,25 @@ def main():
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
+    while True:
+        z=input('Choose one type of bathroom idea (O for options, n for exit category):')
+        if z=='n' or z=='N':
+            break
+
+        elif z=='o' or z=='O':
+            bathroom_menu()
+            cd=input('Enter code of item')
+            cd=cd.split()
+            for i in range(len(cd)):
+              if cd[i] =='n':
+                   break
+              else:
+                  cod=cd[i]
+                  basket.append(cod)
+        else:
+            print('Invalid option. Enter O for options, n for next category ')
+
+
 
 
 
