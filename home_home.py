@@ -54,9 +54,9 @@ def main():
                   cod=cd[i]
                   basket.append(cod)
                   nm=dg[cod][0]
-                  it1=home_category('garden',cod,nm)
-                  it1.price=dg[cod][1]
-                  print_home_category(it1)
+                  itm=home_category('garden',cod,nm)
+                  itm.price=dg[cod][1]
+                  print_home_category(itm)
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
@@ -75,6 +75,10 @@ def main():
              else:
                   cod=cd[i]
                   basket.append(cod)
+                  nm=di[cod][0]
+                  itm=home_category('indoor',cod,nm)
+                  itm.price=di[cod][1]
+                  print_home_category(itm)
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
