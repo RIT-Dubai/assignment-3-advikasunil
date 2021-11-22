@@ -38,20 +38,18 @@ def main():
     print('For your new Home space ...')
     x=input('Choose one type of garden idea (O for options, n for next category):')
 
-    if x=='O' or x=='o':
+    while x!= 'n':
         garden_menu()
         cd=input('Enter code of item')
         cd=cd.split()
         for i in range(len(cd)):
             cod=cd[i]
-            nm=dg[cod][0]
-            it1=home_category('garden',cod,nm)
-            print_home_category(it1)
+            basket.append(cod)
+            # nm=dg[cod][0]
+            # it1=home_category('garden',cod,nm)
+            # print_home_category(it1)
 
-    else:
-        print('bye')
-    # elif x=='N' or x=='n':
-    #     pass
+
 
 main()
 
