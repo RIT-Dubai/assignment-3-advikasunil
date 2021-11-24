@@ -8,10 +8,21 @@ db = {'c':['Shower curtain','$8.0'],'m':['Wall mounted mirror','$20.0'],'s':['Ma
     # def __init__(self,basket):
     #     pass
 def total(basket):
-    price=0
+    pr_g,pr_i,pr_b=0,0,0
+    c_g,c_i,c_b=0,0,0
     for i in basket:
-        price+= i.price
-    print(price)
+        if i.type=='garden':
+            if c_g==0:
+              pr_g= i.price+50
+              c_g+=1
+            else:
+                pr_g+=i.price
+                
+        elif i.type=='indoor':
+            pr_i+=i.price
+        elif i.type=='bathroom':
+            pr_b+=i.price
+    print('total price= ',pr_g+pr_i+pr_b)
 def order(basket):
     print('your order is for a new home experience:')
     for i in basket:
@@ -103,7 +114,7 @@ def main():
                   add_basket(basket,itm)
                   itm.price=float(pr.lstrip('$'))
                   print_home_category(itm)
-                  print(itm.base_service())
+                  #print(itm.base_service())
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
@@ -132,7 +143,7 @@ def main():
             print('Invalid option. Enter O for options, n for next category ')
 
     order(basket)
-    #total(basket)
+    total(basket)
     x=home_category
 
 
