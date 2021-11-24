@@ -17,9 +17,14 @@ def total(basket):
               c_g+=1
             else:
                 pr_g+=i.price
-                
+
         elif i.type=='indoor':
-            pr_i+=i.price
+            if c_i==0:
+              pr_i= i.price+50
+              c_i+=1
+            else:
+              pr_i+=i.price
+
         elif i.type=='bathroom':
             pr_b+=i.price
     print('total price= ',pr_g+pr_i+pr_b)
