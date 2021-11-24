@@ -26,7 +26,12 @@ def total(basket):
               pr_i+=i.price
 
         elif i.type=='bathroom':
-            pr_b+=i.price
+             if c_b==0:
+              pr_b= i.price+50
+              c_b+=1
+             else:
+               pr_b+=i.price
+
     print('total price= ',pr_g+pr_i+pr_b)
 def order(basket):
     print('your order is for a new home experience:')
@@ -149,9 +154,7 @@ def main():
 
     order(basket)
     total(basket)
-    x=home_category
-
-
+    #x=home_category
 
 main()
 
