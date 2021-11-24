@@ -4,9 +4,13 @@ di={'t':['Small table lamp','$5.0'],'f1':['City picture frame','$7.0'],'r':['4x5
 db = {'c':['Shower curtain','$8.0'],'m':['Wall mounted mirror','$20.0'],'s':['Marble sink','$40.0'],'n':['None and next','$0']}
 
 class home:
-    pass
-    #__slots__ = [basket]
-
+    __slots__ = ['basket']
+    def __init__(self,basket):
+        pass
+def order(basket):
+    print('your order is for a new home experience:')
+    for i in basket:
+       print(i.name,'-',i.price)
 class home_category:
     __slots__ = ['type','name','code','price']
     def __init__(self,type,code,name):
@@ -14,8 +18,19 @@ class home_category:
         self.code=code
         self.name= name
         self.price=0
+    def base_service(self):
+        if self.type=='garden':
+            self.price+=50
+        if self.type=='indoor':
+            self.price+=50
+        if self.type=='bathroom':
+            self.price+=50
+        return self.price
+
+
 def print_home_category(item):
     print('one '+ item.name+' is added to your home for '+item.price)
+
 def garden_menu():
         print('Garden Options:')
         for i in dg:
@@ -24,13 +39,14 @@ def indoor_menu():
         print('Indoor Options:')
         for i in di:
            print(di[i][0],'(',i,')', ':',di[i][1])
+
 def bathroom_menu():
         print('Bathroom Options:')
         for i in db:
            print(db[i][0],'(',i,')', ':',db[i][1])
+
 def add_basket(basket,item):
     basket.append(item)
-
 
 def main():
     basket=list()
@@ -52,14 +68,15 @@ def main():
 
                 else:
                   cod=cd[i]
-                  basket.append(cod)
                   nm=dg[cod][0]
+                  pr=dg[cod][1]
                   itm=home_category('garden',cod,nm)
-                  itm.price=dg[cod][1]
+                  add_basket(basket,itm)
+                  itm.price=pr
                   print_home_category(itm)
+
         else:
             print('Invalid option. Enter O for options, n for next category ')
-
 
     while True:
         y=input('Choose one type of indoor idea (O for options, n for next category):')
@@ -74,10 +91,11 @@ def main():
                    break
              else:
                   cod=cd[i]
-                  basket.append(cod)
                   nm=di[cod][0]
+                  pr=di[cod][1]
                   itm=home_category('indoor',cod,nm)
-                  itm.price=di[cod][1]
+                  add_basket(basket,itm)
+                  itm.price=pr
                   print_home_category(itm)
         else:
             print('Invalid option. Enter O for options, n for next category ')
@@ -96,13 +114,17 @@ def main():
                    break
               else:
                   cod=cd[i]
-                  basket.append(cod)
                   nm=db[cod][0]
+                  pr=db[cod][1]
                   itm=home_category('bathroom',cod,nm)
-                  itm.price=db[cod][1]
+                  add_basket(basket,itm)
+                  itm.price=pr
                   print_home_category(itm)
         else:
             print('Invalid option. Enter O for options, n for next category ')
+
+    order(basket)
+
 
 main()
 
