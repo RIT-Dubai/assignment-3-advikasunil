@@ -14,6 +14,12 @@ def test_home_category():
    category_inst2.set_price(7.0)
    assert(category_inst2.get_price()==7.0)
 
+   category_inst3=h.home_category('bathroom','c','Shower curtain')
+   assert(category_inst3.get_type()=='bathroom')
+   assert(category_inst3.get_code()=='c')
+   assert(category_inst3.get_name()=='Shower curtain')
+   category_inst3.set_price(8.0)
+   assert(category_inst3.get_price()==8.0)
 
 
 
