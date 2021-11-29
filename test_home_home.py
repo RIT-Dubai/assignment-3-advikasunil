@@ -7,6 +7,13 @@ def test_home_category():
    category_inst1.set_price(5.0)
    assert(category_inst1.get_price()==5.0)
 
+   category_inst2=h.home_category('indoor','f1','City picture frame')
+   assert(category_inst2.get_type()=='indoor')
+   assert(category_inst2.get_code()=='f1')
+   assert(category_inst2.get_name()=='City picture frame')
+   category_inst2.set_price(7.0)
+   assert(category_inst2.get_price()==7.0)
+
 
 
 
