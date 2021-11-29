@@ -15,32 +15,43 @@ class home:
 
      def add_basket(self,item):
        self.__basket.append(item)
-def total(basket):
-    pr_g,pr_i,pr_b=0,0,0
-    c_g,c_i,c_b=0,0,0
-    for i in basket:
-        if i.type=='garden':
-            if c_g==0:
-              pr_g= i.price+50
-              c_g+=1
-            else:
-                pr_g+=i.price
 
-        elif i.type=='indoor':
-            if c_i==0:
-              pr_i= i.price+50
-              c_i+=1
-            else:
-              pr_i+=i.price
+     def total(self):
+        pr_g,pr_i,pr_b=0,0,0
+        c_g,c_i,c_b=0,0,0
+        for i in self.__basket:
+            if i.get_type()=='garden':
 
-        elif i.type=='bathroom':
-             if c_b==0:
-              pr_b= i.price+50
-              c_b+=1
-             else:
-               pr_b+=i.price
+                if c_g==0:
+                  base_price=i.get_price()+50
+                  i.set_price(base_price)
+                  pr_g=i.get_price()
+                  c_g+=1
+                else:
+                    pr_g+=i.get_price()
 
-    print('total price= ',pr_g+pr_i+pr_b)
+
+            elif i.get_type()=='indoor':
+              if c_i==0:
+                  base_price=i.get_price()+50
+                  i.set_price(base_price)
+                  pr_i=i.get_price()
+                  c_i+=1
+              else:
+                    pr_i+=i.get_price()
+
+            elif i.get_type()=='bathroom':
+                if c_b==0:
+                  base_price=i.get_price()+50
+                  i.set_price(base_price)
+                  pr_b=i.get_price()
+                  c_b+=1
+                else:
+                    pr_b+=i.get_price()
+
+
+        print('total price= ',pr_g+pr_i+pr_b)
+
 
 class home_category:
     __slots__ = ['__type','__name','__code','__price']
@@ -52,8 +63,12 @@ class home_category:
 
     def get_name(self):
         return self.__name
+
     def get_price(self):
         return self.__price
+
+    def get_type(self):
+        return self.__type
 
     def set_price(self,price):
          self.__price= price
@@ -104,15 +119,15 @@ def main():
             break
         elif x=='o' or x=='O':
             garden_menu()
-            cd=input('Enter code of item')
-            cd=cd.split()
+            code=input('Enter code of item')
+            code=code.split()
 
-            for i in range(len(cd)):
-                if cd[i] =='n':
+            for i in range(len(code)):
+                if code[i] =='n':
                    break
 
                 else:
-                  cod=cd[i]
+                  cod=code[i]
                   nm=dg[cod][0]
                   pr=dg[cod][1]
                   itm=home_category('garden',cod,nm)
@@ -129,13 +144,13 @@ def main():
             break
         elif y=='o' or y=='O':
             indoor_menu()
-            cd=input('Enter code of item')
-            cd=cd.split()
-            for i in range(len(cd)):
-             if cd[i] == 'n':
+            code=input('Enter code of item')
+            code=code.split()
+            for i in range(len(code)):
+             if code[i] == 'n':
                    break
              else:
-                  cod=cd[i]
+                  cod=code[i]
                   nm=di[cod][0]
                   pr=di[cod][1]
                   itm=home_category('indoor',cod,nm)
@@ -153,13 +168,13 @@ def main():
 
         elif z=='o' or z=='O':
             bathroom_menu()
-            cd=input('Enter code of item')
-            cd=cd.split()
-            for i in range(len(cd)):
-              if cd[i] =='n':
+            code=input('Enter code of item')
+            code=code.split()
+            for i in range(len(code)):
+              if code[i] =='n':
                    break
               else:
-                  cod=cd[i]
+                  cod=code[i]
                   nm=db[cod][0]
                   pr=db[cod][1]
                   itm=home_category('bathroom',cod,nm)
@@ -171,7 +186,7 @@ def main():
             print('Invalid option. Enter O for options, n for next category ')
 
     basket.order()
-    #total(basket)
+    basket.total()
     #x=home_category
 
 main()
