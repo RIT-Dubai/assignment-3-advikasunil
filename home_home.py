@@ -53,7 +53,7 @@ class home:
                   pr_b+=i.get_price()
 
 
-        print('total price= ',pr_g+pr_i+pr_b)
+        print('total due= ',pr_g+pr_i+pr_b)   #prints total price of all categories inclusive of base price
 
 
 class home_category:
@@ -121,8 +121,8 @@ if __name__ == '__main__':
 
                 else:
                   cod=code[i]
-                  nm=dg[cod][0]
-                  pr=dg[cod][1]
+                  nm=dg[cod][0]   #retrives code from dictionary at index 0
+                  pr=dg[cod][1]   #retrives price from dictionary at index 1
                   itm=home_category('garden',cod,nm)
                   basket.add_basket(itm)
                   itm.set_price(float(pr.lstrip('$')))   #removes $ and sets price as a float value
@@ -132,45 +132,45 @@ if __name__ == '__main__':
 
     while True:
         y=input('Choose one type of indoor idea (O for options, n for next category):')
-        if y=='n' or y=='N':
+        if y=='n' or y=='N':   #removes $ and sets price as a float value
             break
         elif y=='o' or y=='O':
             indoor_menu()
             code=input('Enter code of item')
-            code=code.split()
+            code=code.split()   #split the code if the user enters multiple codes of different items in 1 line
             for i in range(len(code)):
              if code[i] == 'n':
                    break
              else:
                   cod=code[i]
-                  nm=di[cod][0]
-                  pr=di[cod][1]
+                  nm=di[cod][0]  #retrives code from dictionary at index 0
+                  pr=di[cod][1]   #retrives price from dictionary at index 1
                   itm=home_category('indoor',cod,nm)
                   basket.add_basket(itm)
-                  itm.set_price(float(pr.lstrip('$')))
+                  itm.set_price(float(pr.lstrip('$')))  #removes $ and sets price as a float value
                   print(itm.print_home_category())
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
     while True:
         z=input('Choose one type of bathroom idea (O for options, n for exit category):')
-        if z=='n' or z=='N':
+        if z=='n' or z=='N':  #removes $ and sets price as a float value
             break
 
         elif z=='o' or z=='O':
             bathroom_menu()
-            code=input('Enter code of item')
+            code=input('Enter code of item') #split the code if the user enters multiple codes of different items in 1 line
             code=code.split()
             for i in range(len(code)):
               if code[i] =='n':
                    break
               else:
                   cod=code[i]
-                  nm=db[cod][0]
-                  pr=db[cod][1]
+                  nm=db[cod][0]  #retrives code from dictionary at index 0
+                  pr=db[cod][1]  #retrives price from dictionary at index 1
                   itm=home_category('bathroom',cod,nm)
                   basket.add_basket(itm)
-                  itm.set_price(float(pr.lstrip('$')))
+                  itm.set_price(float(pr.lstrip('$'))) #removes $ and sets price as a float value
                   print(itm.print_home_category())
         else:
             print('Invalid option. Enter O for options, n for next category ')
