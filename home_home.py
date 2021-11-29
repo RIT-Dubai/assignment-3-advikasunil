@@ -3,10 +3,18 @@ dg={'p':['3 Pack garden flower','$5.0'],'l':['Hanging light wire','$10.0'],'b':[
 di={'t':['Small table lamp','$5.0'],'f1':['City picture frame','$7.0'],'r':['4x5 Entry rug','$35.0'],'f2':['Flower vase','$14.0'],'n':['None and next','$0']}
 db = {'c':['Shower curtain','$8.0'],'m':['Wall mounted mirror','$20.0'],'s':['Marble sink','$40.0'],'n':['None and next','$0']}
 
-#class home:
-    # __slots__ = ['basket']
-    # def __init__(self,basket):
-    #     pass
+class home:
+     __slots__ = ['__basket']
+     def __init__(self):
+         self.__basket= list()
+
+     def order(self):
+      print('your order is for a new home experience:')
+      for i in self.__basket:
+        print(i.get_name(),'- $',i.get_price())
+
+     def add_basket(self,item):
+       self.__basket.append(item)
 def total(basket):
     pr_g,pr_i,pr_b=0,0,0
     c_g,c_i,c_b=0,0,0
@@ -33,20 +41,31 @@ def total(basket):
                pr_b+=i.price
 
     print('total price= ',pr_g+pr_i+pr_b)
-def order(basket):
-    print('your order is for a new home experience:')
-    for i in basket:
-       print(i.name,'- $',i.price)
+
 class home_category:
-    __slots__ = ['type','name','code','price']
+    __slots__ = ['__type','__name','__code','__price']
     def __init__(self,type,code,name):
-        self.type=type
-        self.code=code
-        self.name= name
-        self.price=0
-    def base_service(self,t_price):
-        if self.type=='garden':
-            t_price+=self.price
+        self.__type=type
+        self.__code=code
+        self.__name= name
+        self.__price=0
+
+    def get_name(self):
+        return self.__name
+    def get_price(self):
+        return self.__price
+
+    def set_price(self,price):
+         self.__price= price
+
+    def print_home_category(self):
+     return('one '+ self.__name+' is added to your home for '+'$'+str(self.__price))
+
+
+
+    # def base_service(self,t_price):
+    #     if self.__type=='garden':
+    #         t_price+=self.__price
         #t_price=t_price+50
         # if self.type=='indoor':
         #     self.price+=50
@@ -55,8 +74,7 @@ class home_category:
         # return self.price
 
 
-def print_home_category(item):
-    print('one '+ item.name+' is added to your home for '+'$'+str(item.price))
+
 
 def garden_menu():
         print('Garden Options:')
@@ -72,11 +90,11 @@ def bathroom_menu():
         for i in db:
            print(db[i][0],'(',i,')', ':',db[i][1])
 
-def add_basket(basket,item):
-    basket.append(item)
+
 
 def main():
-    basket=list()
+    #basket=list()
+    basket=home()
     print('Welcome to Home Ideas Center, where all orders include a new home feeling!')
     print('For your new Home space ...')
 
@@ -98,9 +116,9 @@ def main():
                   nm=dg[cod][0]
                   pr=dg[cod][1]
                   itm=home_category('garden',cod,nm)
-                  add_basket(basket,itm)
-                  itm.price=float(pr.lstrip('$'))
-                  print_home_category(itm)
+                  basket.add_basket(itm)
+                  itm.set_price(float(pr.lstrip('$')))
+                  print(itm.print_home_category())
 
         else:
             print('Invalid option. Enter O for options, n for next category ')
@@ -121,9 +139,9 @@ def main():
                   nm=di[cod][0]
                   pr=di[cod][1]
                   itm=home_category('indoor',cod,nm)
-                  add_basket(basket,itm)
-                  itm.price=float(pr.lstrip('$'))
-                  print_home_category(itm)
+                  basket.add_basket(itm)
+                  itm.set_price(float(pr.lstrip('$')))
+                  print(itm.print_home_category())
                   #print(itm.base_service())
         else:
             print('Invalid option. Enter O for options, n for next category ')
@@ -145,15 +163,15 @@ def main():
                   nm=db[cod][0]
                   pr=db[cod][1]
                   itm=home_category('bathroom',cod,nm)
-                  add_basket(basket,itm)
-                  itm.price=float(pr.lstrip('$'))
-                  print_home_category(itm)
+                  basket.add_basket(itm)
+                  itm.set_price(float(pr.lstrip('$')))
+                  print(itm.print_home_category())
                   #print(itm.base_service())
         else:
             print('Invalid option. Enter O for options, n for next category ')
 
-    order(basket)
-    total(basket)
+    basket.order()
+    #total(basket)
     #x=home_category
 
 main()
